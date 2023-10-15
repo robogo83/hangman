@@ -39,6 +39,7 @@ class Hangman:
             for index, letter in enumerate(self.word):
                 if guess == letter:
                     self.word_guessed[index] = guess
+            print(self.word_guessed)
             self.num_letters -= 1
         else:
             self.num_lives -= 1
@@ -55,13 +56,36 @@ class Hangman:
             guess = input("Guess a letter: ")
             if len(guess) > 1:
                 print("Invalid letter. Please, enter a single alphabetical character.")
+            elif guess.isalpha() == False:
+                print("Invalid character. Only letters are allowed.")
             elif guess in self.list_of_guesses:
                 print("You already tried that letter!")
             else:
                 self.check_guess(guess)
                 self.list_of_guesses.append(guess)
+                break
 
 
-hangman = Hangman(word_list)
+def play_game(word_list):
+    '''
+    This funciton control the flow game using while loop.
+    The loop checks for num_lives, num_letters left and evaluates at what stage of the
+    game the user is. This function creates Hangman objecct and calls the ask_for_input
+    method so that the game can start.
+    '''
+    num_lives = 5
+    game = Hangman(word_list, num_lives)
+    print(f"Welcome to hangman game. Your word: {game.word_guessed}")
+    while True:
+        if game.num_lives == 0:
+            print("You lost!")
+            break
+        elif game.num_letters > 0:
+            game.ask_for_input()
+        else:
+            print("Congratulations. You won the game!")
+            break
 
-hangman.ask_for_input()
+
+if __name__ == '__main__':
+    play_game(word_list)
