@@ -13,6 +13,7 @@ The game has two main functions:
 The code is written in Python. To clone the game to your local computer it is recommended to use git clone https://github.com/robogo83/hangman.git
 
 ## How to Play the Game
+The user has 5 live to guess the word. The user is prompted to enter a single character. The user keeps guessing until all letters are correctly guessed or the user runs out of the lives.
 
 ## File structure
 
