@@ -10,5 +10,3 @@ if len(guess) == 1 and guess.isalpha():
     print('Good guess!')
 else:
     print('Oops that is not a valid input')
-
-print(word)
